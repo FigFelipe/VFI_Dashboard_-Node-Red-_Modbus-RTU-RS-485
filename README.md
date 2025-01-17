@@ -27,7 +27,25 @@ Utilizar os recursos de dashboard do Node-Red para realizar o controle do Invers
 | Conversor USB / Serial RS-232, RS-433, RS-485 | Metaltex MSC-1521U  |
 | Inversor de Frequência                        | Metaltex IF20-201-1 |
 
-## Parametrização do Inversor para Comunicação Modbus RTU via RS-485
+## Parametrização do Inversor de Frequência IF20
+
+O conjunto de parâmetros abaixo prepara o inversor de frequência para comunicar e ser controlado via Modbus RTU / RS-485.
+
+| Parâmetro | Descrição | Valor |
+|-----------|-----------|-------|
+| Funções Básicas |
+| P0.02 | Seleção da fonte de comando | 2: Controle via comunicação
+| P0.04 | Seleção da frequência principal X | 9: Comunicação
+| Parâmetros de Comunicação |
+| PD.00 | Velocidade (baudrate) | 5: 9600bps |
+| PD.01 | Formato do dado | 3: (sem paridade, formato <8,N,1> válido para Modbus) |
+| PD.02 | Endereço Local (1 ao 249, 0 é broadcast) | 2 |
+| PD.03 | Tempo de atraso na resposta (ms) | 2 |
+| PD.04 | Tempo de limite de resposta | 0.0 |
+| PD.05 | Seleção do protocolo Modbus | 1: Padrão do protocolo Modbus |
+| PD.06 | Leitura da resolução de corrente | 1: 0.1A |
+
+
 
 ## Configurando o Conversor USB/Serial
 
