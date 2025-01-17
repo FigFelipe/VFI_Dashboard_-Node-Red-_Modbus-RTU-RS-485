@@ -17,7 +17,22 @@ Utilizar os recursos de dashboard do Node-Red para realizar o controle do Invers
 
 - node-red-contrib-modbus 5.43.0
 
-
 ## Arquitetura de Comunicação
 ![Arquitetura da Automacao](Arquitetura_automacao.JPG)
 
+## Hardware Utilizado
+
+| Nome                                          |  Código             |
+|-----------------------------------------------|---------------------|
+| Conversor USB / Serial RS-232, RS-433, RS-485 | Metaltex MSC-1521U  |
+| Inversor de Frequência                        | Metaltex IF20-201-1 |
+
+## Parametrização do Inversor para Comunicação Modbus RTU via RS-485
+
+## Configurando o Conversor USB/Serial
+
+## Leitura do Registrador Modbus
+
+## Escrita do Registrador Modbus
+
+## Como escrever valores negativos via Modbus?
