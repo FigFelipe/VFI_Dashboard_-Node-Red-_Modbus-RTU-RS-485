@@ -18,7 +18,7 @@ Utilizar os recursos de dashboard do Node-Red para realizar o controle do Invers
 - node-red-contrib-modbus 5.43.0
 
 ## Arquitetura de Comunicação
-![Arquitetura da Automacao](Arquitetura_automacao.JPG)
+![Arquitetura de Comunicação](Arquitetura_Comunicacao.jpg)
 
 ## Hardware Utilizado
 
