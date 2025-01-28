@@ -124,4 +124,14 @@ return msg;
 
 ## Escrita do Registrador Modbus
 
+O método de escrita em um registrador é feito através do bloco 'Modbus Write' e não necessita obrigatoriamente o aguardo em fila de requisição para o envio da mensagem.
+
+![escrita modbus](escrita_registradores_modbus.jpg)
+
+Acessar as configurações do bloco, informar o endereço do dispositivo, o endereço do registrador e o servidor de comunicação (conversor usb serial), conforme ilustrado na imagem abaixo:
+
+
+
+ 
+
 ## Como escrever valores negativos via Modbus?
