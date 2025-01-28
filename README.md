@@ -81,7 +81,7 @@ Ir nas configurações de comunicação da porta, e modificar com os seguintes v
    
    ![Queue](modbus_flex_getter_settings_server_queue.jpg)
 
-4. Na aba **Optionals**, pode-se configurar logs de comunicação:
+4. Na aba **Optionals**, pode-se configurar os logs de comunicação:
    
    ![Optionals](modbus_flex_getter_settings_server_optionals.jpg)
    
@@ -94,13 +94,13 @@ No modbus RTU, para que a requisição de múltiplos valores seja realizada com 
 
  ![leitura modbus](leitura_registradores_modbus.jpg)
 
-### Preparando o conteúdo do Payload
+### Preparando o conteúdo do Msg.payload
 
 O conteúdo do 'bloco de função' pode ser consultado abaixo. No exemplo, o registrador retorna como resposta um único valor.
 
 ``` javascript
 msg.payload = {
-'fc': 3,             // Código de função modbus: 3
+'fc': 3,             // Código da função modbus FC:3 (read register)
 'unitid': 2,         // Endereço do dispositivo (slave id)
 'address': 61441,    // F001h (base 16) sem offset de inicio zero, pode ser representado como 0xF001
 'quantity': 1 } ;    // Quantidade de endereços a ser retornado como resposta, é possível também receber multiplos valores
@@ -124,12 +124,32 @@ return msg;
 
 ## Escrita do Registrador Modbus
 
-O método de escrita em um registrador é feito através do bloco 'Modbus Write' e não necessita obrigatoriamente o aguardo em fila de requisição para o envio da mensagem.
+O método de escrita em um registrador é feito através do bloco 'Modbus Write' e não necessita obrigatoriamente do aguardo em fila de requisição para o envio da mensagem.
 
 ![escrita modbus](escrita_registradores_modbus.jpg)
 
-Acessar as configurações do bloco, informar o endereço do dispositivo, o endereço do registrador e o servidor de comunicação (conversor usb serial), conforme ilustrado na imagem abaixo:
+Acessar as configurações do bloco, informar o endereço do dispositivo, o endereço do registrador (hexadecimal ou decimal) e o servidor de comunicação (conversor usb serial), conforme ilustrado na imagem abaixo:
 
 ![configurações_escrita modbus](configuracoes_modbus_write.jpg)
 
 ## Como escrever valores negativos via Modbus?
+
+Em teoria, para escrever um valor em um determinado registrador, é necessário utilizar a função Modbus FC:6 (Preset Single Register). Esse registrador aceita somente valores positivos entre 0-65535 (2^16 - word).
+
+Para o caso do inversor de frequencia, é possível controlar a velocidade em sentido horário (enviando o valor +10.000) e anti-horário (enviando o valor -10.000).
+
+### Então como realizar o controle de sentido de rotação?
+
+É necessário correlacionar a saída de valores conforme a tabela abaixo, considerando que:
+
+* O limite da escala, entre 65535 e 55536, corresponde ao controle em sentido anti-horário do inversor de frequência.
+* O início da escala, entre 0 e 10.000, corresponde ao controle em sentido horário do inversor de frequência.
+
+| Valor Registrador (Modbus) | Freq. Saída | Valor Inversor | Sentido de Rotação |
+| ------------------------ | ----------- | -------------- | ------------------ |
+| 65535 | 0 Hz | 0 | Motor Parado |
+| 60536 | -30 Hz | -5.000 | Anti-horário |
+| 55536 | -60 Hz | -10.000 | Anti-horário |
+| 10.000 | +60 Hz | +10.000 | Horário |
+| 5.000 | +30 Hz | +5.000 | Horário |
+| 0 | 0 Hz | 0 | Motor Parado |
