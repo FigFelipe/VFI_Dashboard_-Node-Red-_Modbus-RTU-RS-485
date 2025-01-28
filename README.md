@@ -9,6 +9,12 @@ Utilizar os recursos de dashboard do Node-Red para realizar o controle do Invers
 
 [![Watch the video](https://img.youtube.com/vi/khi3BISm9Wk/hqdefault.jpg)](https://www.youtube.com/embed/khi3BISm9Wk)
 
+## Arquivo JSON do Projeto
+
+O arquivo do projeto pode ser obtido nesse mesmo diretório, ou através do link abaixo:
+
+[modbus_flow.json](modbus_flows.json)
+
 ## Autor
 - [Felipe Figueiredo Bezerra](https://github.com/FigFelipe)
 
