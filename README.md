@@ -88,11 +88,39 @@ Ir nas configurações de comunicação da porta, e modificar com os seguintes v
 
 ## Leitura do Registrador Modbus
 
-Em resumo, a leitura de um registrador pode ser preparada através de um bloco de função, exemplo abaixo:
+Em resumo, a leitura de um registrador pode ser preparada através de um bloco de função. 
 
- ![leitura modbus](modbus_flex_getter_settings_server_optionals.jpg)
+No modbus RTU, para que a requisição de múltiplos valores seja realizada com sucesso, é obrigatório encadear cada requisição conforme ilustrado na imagem abaixo.
 
+ ![leitura modbus](leitura_registradores_modbus.jpg)
 
+### Preparando o conteúdo do Payload
+
+O conteúdo do 'bloco de função' pode ser consultado abaixo. No exemplo, o registrador retorna como resposta um único valor.
+
+``` javascript
+msg.payload = {
+'fc': 3,             // Código de função modbus: 3
+'unitid': 2,         // Endereço do dispositivo (slave id)
+'address': 61441,    // F001h (base 16) sem offset de inicio zero, pode ser representado como 0xF001
+'quantity': 1 } ;    // Quantidade de endereços a ser retornado como resposta, é possível também receber multiplos valores
+return msg;
+```
+
+### Extraindo a resposta recebida do dispositivo
+
+Toda a resposta do bloco Modbus Flex Getter é recebida no formato vetorizado. 
+
+Para acessar o valor real recebido, é necessário extrair o valor do vetor através de um outro bloco de função. 
+
+No caso do exemplo abaixo, é extraído o índice 0 (zero) do vetor de resposta.
+
+``` javascript
+var array = msg.payload;
+msg.payload = array[0] / 100;
+msg.topic = 'Freq. de Saída';
+return msg;
+```
 
 ## Escrita do Registrador Modbus
 
