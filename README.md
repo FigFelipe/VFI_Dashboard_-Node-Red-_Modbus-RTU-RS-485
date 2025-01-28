@@ -69,19 +69,26 @@ Ir nas configurações de comunicação da porta, e modificar com os seguintes v
 
 > Nota: Para leitura de múltiplos registradores é ALTAMENTE recomendado utilizar o bloco do Modbus Flex Getter, pois é otimizado para tal função.
 
-1. Na aba Server, configurar o conversor USB Serial:
+1. Na aba **Server**, configurar o conversor USB Serial:
+   
    ![Server](modbus_flex_getter_settings.jpg)
    ![Server](modbus_flex_getter_settings_server_pt1.jpg)
    ![Server](modbus_flex_getter_settings_server_pt2.jpg)
 
-3. Na aba Queue, configurar o método de consulta:
+3. Na aba **Queues**, configurar o método de consulta:
+
+   > Nota: Desmarque a opção **'UnitId's in parallel queues'**, pois compromete o desempenho na comunicaçao Modbus RTU.
+   
    ![Queue](modbus_flex_getter_settings_server_queue.jpg)
 
-4. Na aba Optionals, pode-se configurar logs de comunicação:
+4. Na aba **Optionals**, pode-se configurar logs de comunicação:
+   
    ![Optionals](modbus_flex_getter_settings_server_optionals.jpg)
    
 
 ## Leitura do Registrador Modbus
+
+
 
 ## Escrita do Registrador Modbus
 
