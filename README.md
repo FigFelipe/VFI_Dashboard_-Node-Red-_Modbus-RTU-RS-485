@@ -130,8 +130,6 @@ O método de escrita em um registrador é feito através do bloco 'Modbus Write'
 
 Acessar as configurações do bloco, informar o endereço do dispositivo, o endereço do registrador e o servidor de comunicação (conversor usb serial), conforme ilustrado na imagem abaixo:
 
-
-
- 
+![configurações_escrita modbus](configuracoes_modbus_write.jpg)
 
 ## Como escrever valores negativos via Modbus?
