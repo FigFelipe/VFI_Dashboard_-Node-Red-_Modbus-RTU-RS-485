@@ -49,7 +49,34 @@ O conjunto de parâmetros abaixo prepara o inversor de frequência para comunica
 
 ## Configurando o Conversor USB/Serial
 
+### Gerenciador de Hardware - Windows
+
+Identificamos o conversor USB Serial diretamente no gerenciador de dispositivos do Windows, através do nome Prolific PL2303GC.
+
 ![Conversor USB Serial COM Port](Prolific_PL2303GC.png)
+
+Ir nas configurações de comunicação da porta, e modificar com os seguintes valores de parâmetros abaixo:
+
+> Bits per second: 9600 |
+> Data bits: 8 |
+> Parity: None |
+> Stop bits: 1 |
+> Flow control: None
+
+### Node-RED Dashboard - Modbus
+
+É necessário configurar o conversor USB Serial no node-red, acessar através de um bloco *Modbus Flex Getter*:
+
+> Nota: Para leitura de múltiplos registradores é ALTAMENTE recomendado utilizar o bloco do Modbus Flex Getter, pois é otimizado para tal função.
+
+1. Na aba Server, configurar o conversor USB Serial:
+   
+
+3. Na aba Queue, configurar o método de requisição de pesquisa:
+
+4. Na aba Optionals, pode-se configurar logs de comunicação:
+
+   
 
 ## Leitura do Registrador Modbus
 
