@@ -3,6 +3,8 @@
 ## Objetivo
 Utilizar os recursos de dashboard do Node-Red para realizar o controle do Inversor de Frequencia - Metaltex IF20 via Modbus RTU / RS-485.
 
+![Arquitetura de Comunicação](Dashboard.jpg)
+
 ## Autor
 - [Felipe Figueiredo Bezerra](https://github.com/FigFelipe)
 
@@ -45,9 +47,9 @@ O conjunto de parâmetros abaixo prepara o inversor de frequência para comunica
 | PD.05 | Seleção do protocolo Modbus | 1: Padrão do protocolo Modbus |
 | PD.06 | Leitura da resolução de corrente | 1: 0.1A |
 
-
-
 ## Configurando o Conversor USB/Serial
+
+![Conversor USB Serial COM Port](Prolific_PL2303GC.png)
 
 ## Leitura do Registrador Modbus
 
