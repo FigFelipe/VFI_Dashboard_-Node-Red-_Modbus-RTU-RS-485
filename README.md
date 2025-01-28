@@ -88,6 +88,10 @@ Ir nas configurações de comunicação da porta, e modificar com os seguintes v
 
 ## Leitura do Registrador Modbus
 
+Em resumo, a leitura de um registrador pode ser preparada através de um bloco de função, exemplo abaixo:
+
+ ![leitura modbus](modbus_flex_getter_settings_server_optionals.jpg)
+
 
 
 ## Escrita do Registrador Modbus
