@@ -5,7 +5,7 @@ Utilizar os recursos de dashboard do Node-Red para realizar o controle do Invers
 
 ![Arquitetura de Comunicação](Dashboard.jpg)
 
-## Como funciona?
+## Como funciona? (Video)
 
 [![Watch the video](https://img.youtube.com/vi/khi3BISm9Wk/hqdefault.jpg)](https://www.youtube.com/embed/khi3BISm9Wk)
 
