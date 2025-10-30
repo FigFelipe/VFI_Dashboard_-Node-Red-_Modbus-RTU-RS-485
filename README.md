@@ -163,3 +163,31 @@ Para o caso do inversor de frequencia, é possível controlar a velocidade em se
 | 10.000 | +60 Hz | +10.000 | Horário |
 | 5.000 | +30 Hz | +5.000 | Horário |
 | 0 | 0 Hz | 0 | Motor Parado |
+
+## IF30 - PID
+
+No projeto, é utilizado o sinal FOV (0-20mA) como sinal de feedback do PID. O sinal da saída FOV é injetado na entrada FIC do IF30.
+
+1.	Modificar o Jumper 5 - saída FOV para a posição I
+2.	Modificar o Jumper 3 - entrada FIC para a posição I
+
+Deve-se configurar o parâmetro P5.07 para realizar o ajuste de corrente da saída analógica FOV, conforme abaixo.
+
+| Parâmetro | Descrição            | Valor |
+|-----------|----------------------|-------|
+| P5.07     | Função da Saída FOV  | 12: Ajuste de comunicação (RS-485) |
+
+O ajuste do valor de corrente da entrada FOV, é relacionada conforme tabela abaixo:
+
+| Endereço Modbus | Descrição                             | Valor          | FOC - Corrente saída (mA) | FIV - Tensão Entrada (V) |
+|-----------------|---------------------------------------|----------------|---------------------------|--------------------------|
+| 2002h           | Saída analógica FOV: (apenas escrita) | 32767 (100%)   | 20mA                      |  10V                     |
+| 2002h           | Saída analógica FOV: (apenas escrita) | 16384 (50%)   | 10mA                      |  5V                     |
+| 2002h           | Saída analógica FOV: (apenas escrita) | 0 (0%)   | 0mA                      |  0V                     |
+
+### Dicas
+1. No PID, somente há estabilidade da frequência de saída, quando o sinal de entrada e o sinal de saída do PID forem aproximadamente iguais.
+2. Os sinais de entrada e saída do PID possuem variação em percentual (0-100%) em relação a frequencia de saída.
+3. Inicie os testes na sua planta com o valor da derivada em zero. Na maioria das aplicações, os ajuste dos ganhos Kp e Ti são satisfatórios.
+
+
